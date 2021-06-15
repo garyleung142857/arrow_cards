@@ -1,5 +1,5 @@
-SUITS = ['S', 'H', 'D', 'C']
-RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+from utils import *
+
 
 def _parse_rbn(rbnstr):
     deck = [0] * 52
@@ -14,10 +14,10 @@ def _parse_rbn(rbnstr):
                 if deck[card_index] == 0:
                     deck[card_index] = i
                 else:
-                    raise ValueError(f'Card {SUITS[j]}{c} is assigned more than once.')
+                    raise ValueError(
+                        f'Card {SUITS[j]}{c} is assigned more than once.')
     if deck.count(1) == 13 and deck.count(2) == 13 and deck.count(3) == 13:
         deck = [x if x > 0 else 4 for x in deck]
     else:
         raise ValueError('Wrong format.')
     return deck
-    
